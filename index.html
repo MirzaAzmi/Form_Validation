@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form validation</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<h1 class="text-white text-center font-weight-bold bg-primary" style="font-size: 48px;">REGISTATION FORM</h1>
+
+	<div class="container"><br>
+
+		<div class="col-lg-6 m-auto d-block">
+
+			<form action="#" onsubmit="return validation()" class="bg-light">
+
+				<div class="form-group">
+					<label for="user" class="font-weight-bold"> Username: </label>
+					<input type="text" name="user" class="form-control" id="user" autocomplete="off">
+					<span id="username" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Password: </label>
+					<input type="text" name="pass" class="form-control" id="pass" autocomplete="off">
+					<span id="passwords" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Confirm Password: </label>
+					<input type="text" name="conpass" class="form-control" id="conpass" autocomplete="off">
+					<span id="confrmpass" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Age: </label>
+					<input type="text" name="age" class="form-control" id="age" autocomplete="off">
+					<span id="age1" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Email: </label>
+					<input type="text" name="email" class="form-control" id="emails" autocomplete="off">
+					<span id="emailids" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Location: </label>
+					<input type="text" name="location" class="form-control" id="location" autocomplete="off">
+					<span id="location1" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<input type="submit" name="submit" value="submit" class="btn btn-primary" autocomplete="off">
+
+
+			</form><br><br>
+
+
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+
+
+		function validation() {
+
+			var user = document.getElementById('user').value;
+			var pass = document.getElementById('pass').value;
+			var confirmpass = document.getElementById('conpass').value;
+			var age = document.getElementById('age').value;
+			var emails = document.getElementById('emails').value;
+			var loc = document.getElementById('location').value;
+
+
+
+
+
+			if (user == "") {
+				document.getElementById('username').innerHTML = " ** Please fill the username field";
+				return false;
+			}
+			if ((user.length <= 2) || (user.length > 20)) {
+				document.getElementById('username').innerHTML = " ** Username lenght must be between 2 and 20";
+				return false;
+			}
+			if (!isNaN(user)) {
+				document.getElementById('username').innerHTML = " ** only characters are allowed";
+				return false;
+			}
+			alert(user);
+
+
+
+
+
+
+
+			if (pass == "") {
+				document.getElementById('passwords').innerHTML = " ** Please fill the password field";
+				return false;
+			}
+			if ((pass.length <= 5) || (pass.length > 20)) {
+				document.getElementById('passwords').innerHTML = " ** Passwords lenght must be between  5 and 20";
+				return false;
+			}
+			alert(pass);
+
+
+			if (pass != confirmpass) {
+				document.getElementById('confrmpass').innerHTML = " ** Password does not match the confirm password";
+				return false;
+			}
+
+
+
+			if (confirmpass == "") {
+				document.getElementById('confrmpass').innerHTML = " ** Please fill the confirmpassword field";
+				return false;
+			}
+			alert(confirmpass);
+
+
+
+
+			if (age == "") {
+				document.getElementById('age1').innerHTML = " ** Please fill the age field";
+				return false;
+			}
+			if (age < 18) {
+				document.getElementById('age1').innerHTML = " ** You are not eligible to fill this form";
+				return false;
+			}
+			alert(age);
+
+
+
+			if (emails == "") {
+				document.getElementById('emailids').innerHTML = " ** Please fill the email ids` field";
+				return false;
+			}
+			if (emails.indexOf('@') <= 0) {
+				document.getElementById('emailids').innerHTML = " ** @ Invalid Position";
+				return false;
+			}
+			alert(emails);
+
+
+
+			if (loc == "") {
+				document.getElementById('location1').innerHTML = " ** Please fill the location field";
+				return false;
+			}
+			if (!isNaN(loc)) {
+				document.getElementById('location1').innerHTML = " **please use character only"
+				return false;
+			}
+			alert(loc);
+		}
+
+	</script>
+
+</body>
+
+</html>
